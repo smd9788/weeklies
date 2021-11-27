@@ -9,6 +9,7 @@ export default (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.belongsToMany(models.SecurityPool, { through: 'SecurityPoolDetail' });
+      this.hasMany(models.Security, { as: 'securities' })
     }
   };
   Security.init({
