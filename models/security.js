@@ -1,7 +1,7 @@
 import { Sequelize, DataTypes, Model } from 'sequelize';
 
 export default (sequelize, DataTypes) => {
-  class User extends Model {
+  class Security extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,34 +11,27 @@ export default (sequelize, DataTypes) => {
       // define association here
     }
   };
-  User.init({
-    firstName: {
-      allowNull: false,
-      type: DataTypes.STRING
+  Security.init({
+    lastPrice: {
+      defaultValue: 1.00,
+      type: DataTypes.DECIMAL
     },
-    lastName: {
-      allowNull: false,
-      type: DataTypes.STRING
-    },
-    birthDate: {
-      allowNull: false,
+    priceDate: {
+      defaultValue: new Date(),
       type: DataTypes.DATE
     },
-    email: {
+    securityName: {
       allowNull: false,
       type: DataTypes.STRING
     },
-    username: {
+    ticker: {
       allowNull: false,
       type: DataTypes.STRING
-    },
-    password: {
-      allowNull: false,
-      type: DataTypes.STRING
-    },
+    }
   }, {
     sequelize,
-    modelName: 'User',
+    modelName: 'Security',
+    tableName: 'Securities'
   });
-  return User;
+  return Security;
 };
