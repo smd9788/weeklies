@@ -116,6 +116,9 @@ dist
 # TernJS port file
 .tern-port
 
+# Sequelize
+seeders/
+
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
