@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config()
 
 const { DB_USERNAME, DB_HOST, DB_NAME_DEV, DB_NAME_UAT, DB_NAME_PROD, DB_PASSWORD, DB_PORT } = process.env;
 
