@@ -27,7 +27,8 @@ export default (sequelize, DataTypes) => {
     },
     ticker: {
       allowNull: false,
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      unique: true
     }
   }, {
     sequelize,
