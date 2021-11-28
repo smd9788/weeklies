@@ -9,6 +9,7 @@ export default (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.belongsToMany(models.SecurityPool, { through: 'SecurityPoolDetail' });
+      this.hasMany(models.Security, { as: 'securities' })
     }
   };
   Security.init({
@@ -26,6 +27,13 @@ export default (sequelize, DataTypes) => {
     },
     ticker: {
       allowNull: false,
+      type: DataTypes.STRING,
+      unique: true
+    },
+    industry: {
+      type: DataTypes.STRING
+    },
+    sector: {
       type: DataTypes.STRING
     }
   }, {
