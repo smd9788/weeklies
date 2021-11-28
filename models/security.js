@@ -29,6 +29,12 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING,
       unique: true
+    },
+    industry: {
+      type: DataTypes.STRING
+    },
+    sector: {
+      type: DataTypes.STRING
     }
   }, {
     sequelize,
