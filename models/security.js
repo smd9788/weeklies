@@ -1,6 +1,6 @@
-import { Sequelize, DataTypes, Model } from 'sequelize';
+const { Sequelize, DataTypes, Model } = require('sequelize');
 
-export default (sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
   class Security extends Model {
     /**
      * Helper method for defining associations.
@@ -9,7 +9,6 @@ export default (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.belongsToMany(models.SecurityPool, { through: 'SecurityPoolDetail' });
-      this.hasMany(models.Security, { as: 'securities' })
     }
   };
   Security.init({
