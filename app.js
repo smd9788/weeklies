@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 
-const db = require('./models');
-const security = require('./controllers/security.controller');
+const db = require('./app/models');
+const security = require('./app/controllers/security.controller');
 
 const app = express();
 
@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 
 const port = process.env.PORT || 8080;
 
-require('./routes/security.routes')(app);
+require('./app/routes/security.routes')(app);
 
 app.get('/', (req, res) => {
     res.json({ message: 'Hello World' })
