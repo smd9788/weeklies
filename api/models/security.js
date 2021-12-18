@@ -1,44 +1,46 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
+  class Security extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      this.belongsToMany(models.SecurityPool, {
+        through: 'SecurityPoolDetail'
+      });
     }
   };
-  User.init({
-    firstName: {
-      allowNull: false,
-      type: DataTypes.STRING
+  Security.init({
+    lastPrice: {
+      defaultValue: 1.00,
+      type: DataTypes.DECIMAL
     },
-    lastName: {
-      allowNull: false,
-      type: DataTypes.STRING
-    },
-    birthDate: {
-      allowNull: false,
+    priceDate: {
+      defaultValue: new Date(),
       type: DataTypes.DATE
     },
-    email: {
+    securityName: {
       allowNull: false,
       type: DataTypes.STRING
     },
-    username: {
+    ticker: {
       allowNull: false,
+      type: DataTypes.STRING,
+      unique: true
+    },
+    industry: {
       type: DataTypes.STRING
     },
-    password: {
-      allowNull: false,
+    sector: {
       type: DataTypes.STRING
-    },
+    }
   }, {
     sequelize,
-    modelName: 'User',
+    modelName: 'Security',
+    tableName: 'Securities'
   });
-  return User;
+  return Security;
 };
