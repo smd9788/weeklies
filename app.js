@@ -1,8 +1,10 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const cors = require('cors');
 
-const db = require('./app/models');
-const security = require('./app/controllers/security.controller');
+const db = require('./api/models');
+const Role = db.role;
+const security = require('./api/controllers/security.controller');
 
 const app = express();
 
@@ -11,12 +13,12 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const port = process.env.PORT || 8080;
 
-require('./app/routes/security.routes')(app);
+require('./api/routes/security.routes')(app);
 
 app.get('/', (req, res) => {
     res.json({ message: 'Hello World' })
