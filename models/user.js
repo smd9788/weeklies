@@ -1,6 +1,6 @@
-import { Sequelize, DataTypes, Model } from 'sequelize';
+const { Sequelize, DataTypes, Model } = require('sequelize');
 
-export default (sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
      * Helper method for defining associations.
